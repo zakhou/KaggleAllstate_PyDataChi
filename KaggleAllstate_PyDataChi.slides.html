@@ -13019,7 +13019,7 @@ Name: cat112, dtype: int64
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Over-fitting</li>
-<li></li>
+<li>Improvements? Optimizations?</li>
 </ul>
 
 </div>
@@ -13114,6 +13114,7 @@ Name: cat112, dtype: int64
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Parameter-tuning">Parameter tuning<a class="anchor-link" href="#Parameter-tuning">&#182;</a></h3><p><a href="http://xgboost.readthedocs.io/en/latest/how_to/param_tuning.html">http://xgboost.readthedocs.io/en/latest/how_to/param_tuning.html</a></p>
 <ul>
+<li>RegStratifiedKfold with n_folds = 10</li>
 <li>$\{a, \ c, \ \mathrm{max\_depth},\ \mathrm{min\_child\_weight}, \ \mathrm{gamma}, \ \mathrm{colsample\_bytree}, \ \mathrm{subsample}, \ \mathrm{alpha}, \ \mathrm{lambda}, \ \mathrm{eta}\}$</li>
 <li>10 sub-models to tune with $\mathrm{max\_depth} = \{8,9,10,11,12\}$ and $\mathrm{gamma} = \{0,1\}$</li>
 <li>Tuning other 8 parameters for each sub-model</li>
