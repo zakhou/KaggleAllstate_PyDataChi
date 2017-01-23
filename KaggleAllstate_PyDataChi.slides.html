@@ -11871,10 +11871,7 @@ $$\mathrm{rmse} = \sqrt{\frac{1}{n}\sum_1^n \left( y_i - y_{i,0} \right)^2}$$</l
 <h2 id="Leaderboard-Ranking">Leaderboard Ranking<a class="anchor-link" href="#Leaderboard-Ranking">&#182;</a></h2><ul>
 <li>Public Leaderboard</li>
 <li>Private Leaderboard</li>
-<li>Small improvement probably leads to HUGE boost on leaderboard
-&lt;!---
-Probably need to web-scrape kaggle leaderboard to get distribution
----!&gt;</li>
+<li>Small improvement probably leads to HUGE boost on leaderboard</li>
 </ul>
 
 </div>
@@ -12469,7 +12466,7 @@ Name: cat112, dtype: int64
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Encoding-Categorical-Features">Encoding Categorical Features<a class="anchor-link" href="#Encoding-Categorical-Features">&#182;</a></h2><ul>
-<li>One Hot Encoding<ul>
+<li>One Hot Encoding - convert categories within one column to multiple columns of booleans of categories<ul>
 <li>More rational</li>
 <li>Increase the dimension of the training dataset</li>
 </ul>
@@ -13129,6 +13126,34 @@ Name: cat112, dtype: int64
 </div>
 </div>
 </div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parameter-tuning">Parameter tuning<a class="anchor-link" href="#Parameter-tuning">&#182;</a></h3><ul>
+<li>Stage0 - Very beginning</li>
+<li>Stage1 - Coarse grid search in $\{a, \ c, \ \mathrm{min\_child\_weight}, \ \mathrm{colsample\_bytree}\}$</li>
+<li>Stage2 - Finer grid search in $\{a, \ c, \ \mathrm{min\_child\_weight}, \ \mathrm{colsample\_bytree}\}$</li>
+<li>Stage3 - Further finer grid search in $\{a, \ c, \ \mathrm{min\_child\_weight}, \ \mathrm{subsample}\}$</li>
+<li>Stage4 - Final grid search in $\{\mathrm{alpha}, \ \mathrm{lambda}\}$</li>
+<li>Stage5 - Reduce $\mathrm{eta}$</li>
+<li>Stage6 - Linear combination for each $\mathrm{max\_depth}$</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://plot.ly/~zhenhou/41.embed"><img src="./figures/parameter_tuning_xgboost.svg" width="1000" /></a></p>
+
+</div>
+</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
