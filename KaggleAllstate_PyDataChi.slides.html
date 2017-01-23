@@ -12825,9 +12825,9 @@ Name: cat112, dtype: int64
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Cross-Validation">Cross-Validation<a class="anchor-link" href="#Cross-Validation">&#182;</a></h2><ul>
-<li>KFolds - regression</li>
-<li>StratifiedKFolds - classification</li>
-<li>StratifiedKFolds for regression?</li>
+<li>KFold - regression</li>
+<li>StratifiedKFold - classification</li>
+<li>StratifiedKFold for regression?</li>
 </ul>
 
 </div>
@@ -12838,7 +12838,7 @@ Name: cat112, dtype: int64
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="RegStratifiedKFolds">RegStratifiedKFolds<a class="anchor-link" href="#RegStratifiedKFolds">&#182;</a></h3><ul>
+<h3 id="RegStratifiedKFold">RegStratifiedKFold<a class="anchor-link" href="#RegStratifiedKFold">&#182;</a></h3><ul>
 <li>Make the target distributions of CV-train/CV-test more close between folds</li>
 <li>Reduce the variance of the CV-score between folds</li>
 <li>23% improvement on the variance based on tests with n_folds=10</li>
@@ -13109,7 +13109,7 @@ Name: cat112, dtype: int64
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Parameter-tuning">Parameter tuning<a class="anchor-link" href="#Parameter-tuning">&#182;</a></h3><p><a href="http://xgboost.readthedocs.io/en/latest/how_to/param_tuning.html">http://xgboost.readthedocs.io/en/latest/how_to/param_tuning.html</a></p>
+<h3 id="Parameter-Tuning">Parameter Tuning<a class="anchor-link" href="#Parameter-Tuning">&#182;</a></h3><p><a href="http://xgboost.readthedocs.io/en/latest/how_to/param_tuning.html">http://xgboost.readthedocs.io/en/latest/how_to/param_tuning.html</a></p>
 <ul>
 <li>RegStratifiedKfold with n_folds = 10</li>
 <li>$\{a, \ c, \ \mathrm{max\_depth},\ \mathrm{min\_child\_weight}, \ \mathrm{gamma}, \ \mathrm{colsample\_bytree}, \ \mathrm{subsample}, \ \mathrm{alpha}, \ \mathrm{lambda}, \ \mathrm{eta}\}$</li>
@@ -13131,7 +13131,7 @@ Name: cat112, dtype: int64
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Parameter-tuning">Parameter tuning<a class="anchor-link" href="#Parameter-tuning">&#182;</a></h3><ul>
+<h3 id="Parameter-Tuning-Procedure">Parameter Tuning Procedure<a class="anchor-link" href="#Parameter-Tuning-Procedure">&#182;</a></h3><ul>
 <li>Stage0 - Very beginning</li>
 <li>Stage1 - Coarse grid search in $\{a, \ c, \ \mathrm{min\_child\_weight}, \ \mathrm{colsample\_bytree}\}$</li>
 <li>Stage2 - Finer grid search in $\{a, \ c, \ \mathrm{min\_child\_weight}, \ \mathrm{colsample\_bytree}\}$</li>
@@ -13159,7 +13159,122 @@ Name: cat112, dtype: int64
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Multi-Layer-Perceptron-(MLP)">Multi-Layer Perceptron (MLP)<a class="anchor-link" href="#Multi-Layer-Perceptron-(MLP)">&#182;</a></h2>
+<h3 id="CV-Scores-after-Tuning">CV Scores after Tuning<a class="anchor-link" href="#CV-Scores-after-Tuning">&#182;</a></h3><ul>
+<li>One example with <ul>
+<li>max_depth = 10</li>
+<li>gamma = 0.0</li>
+<li>a = 204</li>
+<li>c = 0.9</li>
+<li>min_child_weight = 258</li>
+<li>colsample_bytree = 0.1</li>
+<li>subsample = 1.0</li>
+<li>eta = 0.01</li>
+<li>alpha = 1.2</li>
+<li>lambda = 1.2</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://plot.ly/~zhenhou/45.embed"><img src="./figures/scores_xgboost_train_md10g0.svg" width="1000" /></a></p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Multi-Layer-Perceptron-(MLP)">Multi-Layer Perceptron (MLP)<a class="anchor-link" href="#Multi-Layer-Perceptron-(MLP)">&#182;</a></h2><p><a href="https://www.kaggle.com/mtinti/allstate-claims-severity/keras-starter-with-bagging-1111-84364">Keras Starter Example</a></p>
+<ul>
+<li>One Hot Encoded categorical features + numerical features</li>
+<li>A very incomplete example</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span>
+<span class="kn">from</span> <span class="nn">keras.layers.normalization</span> <span class="kn">import</span> <span class="n">BatchNormalization</span>
+<span class="kn">from</span> <span class="nn">keras.layers.advanced_activations</span> <span class="kn">import</span> <span class="n">PReLU</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Parameters:</span>
+<span class="sd">n_layers: number of hidden layers for MLP</span>
+<span class="sd">elements[]: how many elements for each hidden layer</span>
+<span class="sd">dropouts[]: drop-out ratio for each hidden layer</span>
+
+<span class="sd">1 + n_layers**2 free parameters</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">mlp_model</span><span class="p">():</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_layers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">input_dim</span> <span class="o">=</span> <span class="n">xtrain</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;he_normal&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;he_normal&#39;</span><span class="p">))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">PReLU</span><span class="p">())</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BatchNormalization</span><span class="p">())</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropouts</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;he_normal&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span> <span class="o">=</span> <span class="s1">&#39;mae&#39;</span><span class="p">,</span> <span class="n">optimizer</span> <span class="o">=</span> <span class="s1">&#39;adadelta&#39;</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">num_bags</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_bags</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">mlp_model</span><span class="p">()</span>
+    <span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_generator</span><span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="n">batch_generator</span><span class="p">(</span><span class="n">xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+                              <span class="n">nb_epoch</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                              <span class="n">samples_per_epoch</span> <span class="o">=</span> <span class="n">xtr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                              <span class="n">verbose</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_generator</span><span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="n">batch_generatorp</span><span class="p">(</span><span class="n">xte</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="n">val_samples</span> <span class="o">=</span> <span class="n">xte</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])[:,</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">log_shift</span>
+    <span class="n">pred_test</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_generator</span><span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="n">batch_generatorp</span><span class="p">(</span><span class="n">xtest</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="n">val_samples</span> <span class="o">=</span> <span class="n">xtest</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])[:,</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">log_shift</span>
+    <span class="n">pred_train</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_generator</span><span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="n">batch_generatorp</span><span class="p">(</span><span class="n">xtr</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="n">val_samples</span> <span class="o">=</span> <span class="n">xtr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])[:,</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">log_shift</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Very-Coarse-Parameter-Tuning-by-CV">Very Coarse Parameter Tuning by CV<a class="anchor-link" href="#Very-Coarse-Parameter-Tuning-by-CV">&#182;</a></h3><ul>
+<li>n_layers=3, elements=[400,200,50], dropouts=[0.3,0.2,0.2]<ul>
+<li>CV-Score = 1130.294</li>
+</ul>
+</li>
+<li>n_layers=3, elements=[500,250,75], dropouts=[0.3,0.2,0.2]<ul>
+<li>CV-Score = 1130.952</li>
+</ul>
+</li>
+<li>n_layers=4, elements=[600,200,100,50], dropouts=[0.4,0.2,0.2,0.2]<ul>
+<li>CV-Score = 1130.900</li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -13168,10 +13283,25 @@ Name: cat112, dtype: int64
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Ensemble-Models">Ensemble Models<a class="anchor-link" href="#Ensemble-Models">&#182;</a></h1>
+<h1 id="Ensemble-Models">Ensemble Models<a class="anchor-link" href="#Ensemble-Models">&#182;</a></h1><ul>
+<li>Ensemble of XGBoost sub-models</li>
+<li>Ensemble of MLP sub-models</li>
+<li>Ensemble of both XGBoost and MLP models</li>
+<li>Linear regression of combination parameters with Nelder-Mead minimizer</li>
+</ul>
+
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13189,7 +13319,7 @@ Name: cat112, dtype: int64
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13200,6 +13330,31 @@ Name: cat112, dtype: int64
 <li>Target encoding categorical features for MLP</li>
 <li>PCA numeric features for XGBoost</li>
 <li>PCA encoded categorical features for XGBoost</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Thoughs-on-Improvements">Thoughs on Improvements<a class="anchor-link" href="#Thoughs-on-Improvements">&#182;</a></h1><ul>
+<li>Set up Keras on GPU with more intensive parameter tuning</li>
+<li>Other models (sklearn.ensemble):<ul>
+<li>RandomForrest Regressor</li>
+<li>ExtraTree Regressor</li>
+<li>Bagging Regressor</li>
+<li>AdaBoost Regressor</li>
+</ul>
+</li>
+<li>Outliers<ul>
+<li>Classification</li>
+</ul>
+</li>
+<li>More sophisticated second/third level model ensemble (blending)</li>
+<li>Real meaning of features</li>
 </ul>
 
 </div>
