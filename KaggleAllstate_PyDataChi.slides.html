@@ -11890,7 +11890,17 @@ $$\mathrm{rmse} = \sqrt{\frac{1}{n}\sum_1^n \left( y_i - y_{i,0} \right)^2}$$</l
 <h2 id="Leaderboard-Ranking">Leaderboard Ranking<a class="anchor-link" href="#Leaderboard-Ranking">&#182;</a></h2><ul>
 <li>Public Leaderboard</li>
 <li>Private Leaderboard</li>
-<li>Small improvement probably leads to HUGE boost on leaderboard</li>
+<li>Small improvement probably leads to HUGE boost on leaderboard<ul>
+<li>Top 10  1110.69997</li>
+<li>Top 1%  1112.34516</li>
+<li>Top 2%  1112.98348</li>
+<li>Top 5%  1113.98717</li>
+<li>Top 10% 1115.55861</li>
+<li>Top 25% 1124.19659</li>
+<li>Top 50% 1138.32473</li>
+</ul>
+</li>
+<li>Leaderboard scores are slightly different from CV scores</li>
 </ul>
 
 </div>
@@ -11904,6 +11914,11 @@ $$\mathrm{rmse} = \sqrt{\frac{1}{n}\sum_1^n \left( y_i - y_{i,0} \right)^2}$$</l
 <h1 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">&#182;</a></h1><p><a href="https://www.kaggle.com/c/allstate-claims-severity/data">https://www.kaggle.com/c/allstate-claims-severity/data</a></p>
 <ul>
 <li>csv format for both training and test datasets</li>
+<li>Feature/Column names are anonymous<ul>
+<li>'cat' for categorical</li>
+<li>'cont' for numeric</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -12366,6 +12381,7 @@ Name: cat112, dtype: int64
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Encoding-Categorical-Features">Encoding Categorical Features<a class="anchor-link" href="#Encoding-Categorical-Features">&#182;</a></h2><ul>
 <li>Factorize Encoding<ul>
+<li>Convert the categories as an enumerated type</li>
 <li>Not quite meaningful for a regression problem (especially for linear regression)</li>
 <li>biased difference between categories</li>
 </ul>
@@ -12486,6 +12502,7 @@ Name: cat112, dtype: int64
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Encoding-Categorical-Features">Encoding Categorical Features<a class="anchor-link" href="#Encoding-Categorical-Features">&#182;</a></h2><ul>
 <li>One Hot Encoding - convert categories within one column to multiple columns of booleans of categories<ul>
+<li>Convert single column of categories to multi-column booleans for individual categories</li>
 <li>More rational</li>
 <li>Increase the dimension of the training dataset</li>
 </ul>
