@@ -11830,7 +11830,26 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Cracking-the-Kaggle-Competition">Cracking the Kaggle Competition<a class="anchor-link" href="#Cracking-the-Kaggle-Competition">&#182;</a></h1>
+<h1 id="Cracking-the-Kaggle-Competition">Cracking the Kaggle Competition<a class="anchor-link" href="#Cracking-the-Kaggle-Competition">&#182;</a></h1><h2 id="Allstate-Claims-Severity">Allstate Claims Severity<a class="anchor-link" href="#Allstate-Claims-Severity">&#182;</a></h2><p>Zak Hou <br>
+zak@zakhou.com <br>
+@ZakzHou</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Overview of the competition and the dataset</li>
+<li>Feature engineering</li>
+<li>Predictive modeling</li>
+<li>Ensemble models</li>
+<li>Summary</li>
+</ul>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -12792,18 +12811,18 @@ Name: cat112, dtype: int64
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">df_train_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">num_train</span><span class="p">,</span> <span class="n">features_numeric</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Pick up pairs of numeric features with correlation &gt; 0.8</li>
+<li>Create new features by taking the residual and the difference of the selected pairs</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -13260,7 +13279,7 @@ Name: cat112, dtype: int64
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Very-Coarse-Parameter-Tuning-by-CV">Very Coarse Parameter Tuning by CV<a class="anchor-link" href="#Very-Coarse-Parameter-Tuning-by-CV">&#182;</a></h3><ul>
+<h3 id="Very-Coarse-Parameter-Tuning-through-CV">Very Coarse Parameter Tuning through CV<a class="anchor-link" href="#Very-Coarse-Parameter-Tuning-through-CV">&#182;</a></h3><ul>
 <li>n_layers=3, elements=[400,200,50], dropouts=[0.3,0.2,0.2]<ul>
 <li>CV-Score = 1130.294</li>
 </ul>
@@ -13284,9 +13303,9 @@ Name: cat112, dtype: int64
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Ensemble-Models">Ensemble Models<a class="anchor-link" href="#Ensemble-Models">&#182;</a></h1><ul>
-<li>Ensemble of XGBoost sub-models</li>
-<li>Ensemble of MLP sub-models</li>
-<li>Ensemble of both XGBoost and MLP models</li>
+<li>Stage7.a - ensemble of XGBoost sub-models</li>
+<li>Stage7.b - ensemble of MLP sub-models</li>
+<li>Stage8 - Ensemble of both XGBoost and MLP models</li>
 <li>Linear regression of combination parameters with Nelder-Mead minimizer</li>
 </ul>
 
@@ -13298,6 +13317,7 @@ Name: cat112, dtype: int64
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://plot.ly/~zhenhou/47.embed"><img src="./figures/parameter_tuning_xgboost+mlp.svg" width="1000" /></a></p>
 
 </div>
 </div>
@@ -13355,11 +13375,69 @@ Name: cat112, dtype: int64
 </li>
 <li>More sophisticated second/third level model ensemble (blending)</li>
 <li>Real meaning of features</li>
+<li>Bayesian scheme for parameter tuning (MCMC?)</li>
 </ul>
 
 </div>
 </div>
-</div></section></section>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Thank-you!">Thank you!<a class="anchor-link" href="#Thank-you!">&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Thanks to Civis Analytics for hosting and sponsoring the Pizza!</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Thanks to everyone who joins our Meetup event!</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Thank you, Stephen Hoover and Safia for helping me going through the presentation!</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Thanks to Kaggle community!</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section>
 </div>
 </div>
 
